@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Application Form</title>
+</head>
+
+<body style="font-family: Arial, sans-serif; font-size: 14px; margin: 20px;">
+  <div>
+    <!-- A. PERSONAL INFORMATION (Already provided above) -->
+    <table style="width: 100%; border-collapse: collapse;font-size: 12px;">
+      <tr>
+        <td style="width: 20%;">
+          <img style="width: 120px;height: 120px; border-radius: 100px;" src="<%= profile_image_path %>"
+            alt="Profile Image">
+        </td>
+
+        <td style="width: 60%; padding-left: 15px;">
+          <p style="margin: 0;"><strong>Unit 1506 - 1510 15<sup>th</sup> Floor Trium Square Bldg., 2183 Sen. Gil Puyat
+              Ave, Pasay City 1300</strong></p>
+          <p style="margin: 5px 0;">
+            <strong>DATE OF APPLICATION:</strong>
+            <%= new Date(created_at).toLocaleDateString('en-GB').replace(/\//g, '.' ) %>
+          </p>
+
+          <p style="margin: 5px 0;"><strong>POSITION APPLIED:</strong> __________________________</p>
+        </td>
+        <td style="width: 20%; height: 120px; text-align: center;">
+          <img style="width: 120px;" src="https://navilands.vns360.gr/api/templates/logo_one.png" alt="">
+        </td>
+      </tr>
+    </table>
+
+    <h4 style="margin-bottom: 5px;text-align: center;font-size: 12px;">SEAFARER’S APPLICATION FORM</h4>
+    <table style="width: 100%; border-collapse: collapse;border:2px solid #000;border-bottom: 0;font-size: 12px;">
+      <tr>
+        <td colspan="3" style="padding: 5px; border: 1px solid #000;font-weight: 600;">A. PERSONAL INFORMATION
+        </td>
+      </tr>
+      <tr>
+        <td style="padding: 5px; border: 1px solid #000;"><strong>First Name:</strong>
+          <%= first_name %>
+        </td>
+        <td style="padding: 5px; border: 1px solid #000;"> <strong>Middle Name:</strong>
+          <%= middle_name %>
+        </td>
+        <td style="padding: 5px; border: 1px solid #000;"> <strong>Family Name:</strong>
+          <%= last_name %>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3" style="padding: 5px; border: 1px solid #000;"><strong>Home Address:</strong>
+          <%= home_address%>
+        </td>
+
+      </tr>
+
+      <tr>
+        <td style="padding: 5px; border: 1px solid #000;"><strong>Email Address:</strong>
+          <%= user.email %>
+        </td>
+        <td style="padding: 5px; border: 1px solid #000;"><strong>Mobile Number:</strong>
+          <%= mobile %>
+        </td>
+        <td style="padding: 5px; border: 1px solid #000;"><strong>Residence Number:</strong>
+          <%= residence_number %>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="padding: 5px; border: 1px solid #000;"><strong>Marital Status:</strong>
+          <%= marital_status %>
+        </td>
+        <td style="padding: 5px; border: 1px solid #000;"><strong>Birth Date:</strong>
+          <%= dob ? new Date(dob).toLocaleDateString('en-GB').replace(/\//g, '.' ) : 'N/A' %>
+        </td>
+
+        <td style="padding: 5px; border: 1px solid #000;"><strong>Birth Place:</strong>
+          <%= birth_place %>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding: 5px; border: 1px solid #000;"><strong>Father’s Full Name:</strong>
+          <%= father_full_name %>
+        </td>
+        <td style="padding: 5px; border: 1px solid #000;"><strong>Mother’s Full Name:</strong>
+          <%= mother_full_name %>
+        </td>
+        <td style="padding: 5px; border: 1px solid #000;"><strong>Height (cm): </strong>
+          <%= height %>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding: 5px; border: 1px solid #000;">
+          <strong>Father’s Birth Date : </strong>
+          <%= father_dob ? new Date(father_dob).toLocaleDateString('en-GB').replace(/\//g, '.' ) : 'N/A' %>
+        </td>
+        <td style="padding: 5px; border: 1px solid #000;">
+          <strong>Mother’s Birth Date : </strong>
+          <%= mother_dob ? new Date(mother_dob).toLocaleDateString('en-GB').replace(/\//g, '.' ) : 'N/A' %>
+        </td>
+
+        <td style="padding: 5px; border: 1px solid #000;"><strong>Weight (kg): </strong>
+          <%= weight %>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding: 5px; border: 1px solid #000;"><strong>SSS No.: </strong>
+          <%= sss_number %>
+        </td>
+        <td style="padding: 5px; border: 1px solid #000;"><strong>PhilHealth No.: </strong>
+          <%= phil_health_number %>
+        </td>
+        <td style="padding: 5px; border: 1px solid #000;"><strong>Pagibig No.:</strong>
+          <%= pagibig_number %>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding: 5px; border: 1px solid #000;" colspan="3"><strong>Professional School/Academy/Course/Period
+            (From –
+            To): </strong>
+          <% if (education_info && education_info.length> 0) { %>
+            <% education_info.forEach(function(education) { %>
+
+              <!-- <td style="padding: 5px; border: 1px solid #000;">
+        <%= education.education_from ? new Date(education.education_from).toLocaleDateString('en-GB').replace(/\//g, '.') : 'N/A' %>
+      </td>
+      <td style="padding: 5px; border: 1px solid #000;">
+        <%= education.education_to ? new Date(education.education_to).toLocaleDateString('en-GB').replace(/\//g, '.') : 'N/A' %>
+      </td> -->
+              <%= new Date(education.education_from).toLocaleDateString('en-GB').replace(/\//g, '.' ) %> – <%= new
+                  Date(education.education_to).toLocaleDateString('en-GB').replace(/\//g, '.' ) %>
+
+
+                  <% }); %>
+                    <% } else { %>
+                      <!-- <tr>
+        <td style="padding: 5px; border: 1px solid #000;" colspan="3">No education information available.</td>
+      </tr> -->
+                      <% } %>
+        </td>
+      </tr>
+
+
+
+      </tr>
+
+      <tr>
+        <td style="padding: 5px; border: 1px solid #000;" colspan="3"><strong>Foreign Crew Experience (specify
+            nationalities): </strong>
+          <%= work_experiences %>
+        </td>
+        </td>
+      </tr>
+      <!-- <tr>
+        <td style="padding: 5px; border: 1px solid #000;" colspan="3"> <strong>Other Skills: </strong> <%= key_skills %></td>
+      </tr> -->
+    </table>
+
+    <table style="width: 100%; border-collapse: collapse; border:2px solid #000;border-bottom: 0;font-size: 12px;">
+      <tr>
+        <td colspan="4" style="padding: 5px; border: 1px solid #000;font-weight: 600;">CONTACT PERSON IN CASE OF
+          EMERGENCY</td>
+      </tr>
+
+      <tr>
+        <th style="width: 5%;padding: 5px;border: 1px solid #000;text-align: left;">S.No.</th>
+        <th style="width: 25%;padding: 5px;border: 1px solid #000;text-align: left;">Name</th>
+        <th style="width: 15%;padding: 5px;border: 1px solid #000;text-align: left;">Address</th>
+        <th style="width: 25%;padding: 5px;border: 1px solid #000;text-align: left;">Contact Number</th>
+        <th style="width: 30%;padding: 5px;border: 1px solid #000;text-align: left;">Relationship</th>
+      </tr>
+      <% if (contact_person_in_emergency && contact_person_in_emergency.length> 0) { %>
+        <% contact_person_in_emergency.forEach(function(contact, index) { %>
+          <tr>
+            <td style="padding: 5px; border: 1px solid #000;font-size: 12px;">
+              <%= index + 1 %>
+            </td>
+            <!-- <td style="padding: 5px; border: 1px solid #000;">1</td> -->
+            <td style="padding: 5px; border: 1px solid #000;font-size: 12px;">
+              <%= contact.name %>
+            </td>
+            <td style="padding: 5px; border: 1px solid #000;font-size: 12px;">
+              <%= contact.address %>
+            </td>
+            <td style="padding: 5px; border: 1px solid #000;font-size: 12px;">
+              <%= contact.contact_number %>
+            </td>
+            <td style="padding: 5px; border: 1px solid #000;font-size: 12px;">
+              <%= contact.relationship %>
+            </td>
+          </tr>
+          <% }); %>
+            <% } else { %>
+              <tr>
+                <td style="padding: 5px; border: 1px solid #000;" colspan="4">No emergency contact information
+                  available.</td>
+              </tr>
+              <% } %>
+
+               
+    </table>
+
+    <table style="width: 100%; border-collapse: collapse; border:2px solid #000; border-bottom: 0; font-size: 12px;">
+      <tr>
+        <td colspan="5" style="padding: 5px; border: 1px solid #000;font-weight: 600;">LEGAL DEPENDENTS</td>
+      </tr>
+      <tr>
+        <th style="width: 5%;padding: 5px;border: 1px solid #000;text-align: left;">S.No.</th>
+        <th style="width: 25%;padding: 5px;border: 1px solid #000;text-align: left;">Name</th>
+        <th style="width: 15%;padding: 5px;border: 1px solid #000;text-align: left;">Gender</th>
+        <th style="width: 25%;padding: 5px;border: 1px solid #000;text-align: left;">Relationship</th>
+        <th style="width: 30%;padding: 5px;border: 1px solid #000;text-align: left;">Birth Date</th>
+      </tr>
+
+      <% let rowsToShow=4; %> <!-- Set the number of rows to always display -->
+        <% let displayedDependents=legal_dependent ? legal_dependent.slice(0, rowsToShow) : []; %>
+          <% for (let i=0; i < rowsToShow; i++) { %>
+            <tr style="height: 25px;"> <!-- Fixed height for rows -->
+              <td style="padding: 5px; border: 1px solid #000;font-size: 12px;">
+                <%= displayedDependents[i] ? i + 1 : '' %>
+              </td>
+              <td style="padding: 5px; border: 1px solid #000;font-size: 12px;">
+                <%= displayedDependents[i] ? displayedDependents[i].full_name : '' %>
+              </td>
+              <td style="padding: 5px; border: 1px solid #000;font-size: 12px;">
+                <%= displayedDependents[i] ? displayedDependents[i].gender : '' %>
+              </td>
+              <td style="padding: 5px; border: 1px solid #000;font-size: 12px;">
+                <%= displayedDependents[i] ? displayedDependents[i].relationship : '' %>
+              </td>
+              <td style="padding: 5px; border: 1px solid #000;font-size: 12px;">
+                <%= displayedDependents[i] && displayedDependents[i].date_of_birth ? new
+                  Date(displayedDependents[i].date_of_birth).toLocaleDateString('en-GB').replace(/\//g, '.' ) : '' %>
+              </td>
+            </tr>
+            <% } %>
+
+              <!-- If no legal dependents data exists -->
+              <% if (!legal_dependent || legal_dependent.length===0) { %>
+                <tr>
+                  <td colspan="5" style="padding: 5px; border: 1px solid #000;" align="center">No legal dependent
+                    information available.</td>
+                </tr>
+                <% } %>
+
+    </table>
+
+
+<!-- B. TRAVEL DOCUMENTS AND COC -->
+<table style="width: 100%; border-collapse: collapse; border:2px solid #000; margin-top: 10px;font-size: 12px;">
+  <tr>
+    <td colspan="5" style="padding: 5px; border: 1px solid #000;font-weight: 600;">B. TRAVEL DOCUMENTS AND COC</td>
+  </tr>
+  <tr style="font-weight: bold;">
+    <td style="padding: 5px; border: 1px solid #000;">Document Name (Description)</td>
+    <td style="padding: 5px; border: 1px solid #000;">Document Number</td>
+    <td style="padding: 5px; border: 1px solid #000;">Issue Place</td>
+    <td style="padding: 5px; border: 1px solid #000;">Issue Date</td>
+    <td style="padding: 5px; border: 1px solid #000;">Exp. Date</td>
+  </tr>
+
+  <!-- List of all document types in the required order -->
+  <% 
+    var documentTypes = [
+      "Passport", "Seaman’s Book", "Seafarer’s Identity Document", 
+      "Certificate of Proficiency (COP) National Certificate (NC)", 
+      "E-Registration", "Vaccination against Yellow Fever", 
+      "Vaccination against Cholera", "Visa – United States (type C1/D)", 
+      "Schengen Visa"
+    ];
+  %>
+
+  <% documentTypes.forEach(function(docType) { %>
+    <tr style="height: 25px;"> <!-- Fixed height for rows -->
+      <td style="padding: 5px; border: 1px solid #000;font-size: 12px;">
+        <%= docType %> <!-- Display the document type -->
+      </td>
+      <td style="padding: 5px; border: 1px solid #000;font-size: 12px;">
+        <%= travel_documents.find(doc => doc.travel_documents_type === docType) ? travel_documents.find(doc => doc.travel_documents_type === docType).document_number : '' %>
+      </td>
+      <td style="padding: 5px; border: 1px solid #000;font-size: 12px;">
+        <%= travel_documents.find(doc => doc.travel_documents_type === docType) ? travel_documents.find(doc => doc.travel_documents_type === docType).issue_place : '' %>
+      </td>
+      <td style="padding: 5px; border: 1px solid #000;font-size: 12px;">
+  <%= travel_documents.find(doc => doc.travel_documents_type === docType) ? new Date(travel_documents.find(doc => doc.travel_documents_type === docType).issue_date).toLocaleDateString('en-GB').replace(/\//g, '.') : '' %>
+</td>
+<td style="padding: 5px; border: 1px solid #000;font-size: 12px;">
+  <%= travel_documents.find(doc => doc.travel_documents_type === docType) ? new Date(travel_documents.find(doc => doc.travel_documents_type === docType).exp_date).toLocaleDateString('en-GB').replace(/\//g, '.') : '' %>
+</td>
+
+    </tr>
+  <% }); %>
+
+  <% if (travel_documents && travel_documents.length === 0) { %>
+    <tr>
+      <td style="padding: 5px; border: 1px solid #000;" colspan="5">No travel documents information available.</td>
+    </tr>
+  <% } %>
+<!-- <tr>
+  <td style="padding: 5px; text-align: center;" colspan="6">
+    <strong>COP/NC Authenticity Check (pls. tick) –   [   ] MARINA [   ] TESDA 
+</strong>
+  </td>
+</tr> -->
+</table>
+
+
+
+
+    <!-- <p style="margin: 10px 0;">
+      <strong>COP/NC Authenticity Check (pls. tick)</strong> – [ ] MARINA &nbsp;&nbsp; [ ] TESDA
+    </p> -->
+
+    <!-- C. TRAINING CERTIFICATES -->
+    <div style="page-break-before: always;">
+
+      <p></p>
+      <table style="width: 100%; border-collapse: collapse; border:2px solid #000;">
+        <tr>
+          <td colspan="5" style="padding: 5px; border: 1px solid #000; font-weight: 600;font-size: 12px;">
+            C. TRAINING CERTIFICATES
+          </td>
+        </tr>
+
+        <tr>
+          <td style="padding: 5px;font-size: 12px;">
+            <%= training_certificate?.some(c=> c.training_type === 'Basic Training') ? '☑' : '☐' %> Basic Training
+          </td>
+          <td style="padding: 5px;font-size: 12px;">
+            <%= training_certificate?.some(c=> c.training_type === 'Advance Fire Fighting') ? '☑' : '☐' %> Advance Fire
+              Fighting
+          </td>
+          <td style="padding: 5px;font-size: 12px;">
+            <%= training_certificate?.some(c=> c.training_type === 'Medical Care') ? '☑' : '☐' %> Medical Care
+          </td>
+          <td style="padding: 5px;font-size: 12px;">
+            <%= training_certificate?.some(c=> c.training_type === 'Fast Rescue Boat') ? '☑' : '☐' %> Fast Rescue Boat
+          </td>
+        </tr>
+
+        <tr>
+          <td style="padding: 5px;font-size: 12px;">
+            <%= training_certificate?.some(c=> c.training_type === 'Radar Simulator Course') ? '☑' : '☐' %> Radar
+              Simulator Course
+          </td>
+          <td style="padding: 5px;font-size: 12px;">
+            <%= training_certificate?.some(c=> c.training_type === 'General Operator Course') ? '☑' : '☐' %> General
+              Operator Course
+          </td>
+          <td style="padding: 5px;font-size: 12px;">
+            <%= training_certificate?.some(c=> c.training_type === 'Messman Course') ? '☑' : '☐' %> Messman Course
+          </td>
+          <td style="padding: 5px;font-size: 12px;">
+            <%= training_certificate?.some(c=> c.training_type === 'Basic Training COP') ? '☑' : '☐' %> Basic Training
+              COP
+          </td>
+        </tr>
+
+        <tr>
+          <td style="padding: 5px;font-size: 12px;">
+            <%= training_certificate?.some(c=> c.training_type === 'Advance Fire Fighting COP') ? '☑' : '☐' %> Advance
+              Fire Fighting COP
+          </td>
+          <td style="padding: 5px;font-size: 12px;">
+            <%= training_certificate?.some(c=> c.training_type === 'ECDIS') ? '☑' : '☐' %> ECDIS
+          </td>
+          <td style="padding: 5px;font-size: 12px;">
+            <%= training_certificate?.some(c=> c.training_type === 'Hazardous Material') ? '☑' : '☐' %> Hazardous
+              Material
+          </td>
+          <td style="padding: 5px;font-size: 12px;">
+            <%= training_certificate?.some(c=> c.training_type === 'Automatic Radar Plotting Aid') ? '☑' : '☐' %>
+              Automatic Radar Plotting Aid
+          </td>
+        </tr>
+
+        <tr>
+          <td style="padding: 5px;font-size: 12px;">
+            <%= training_certificate?.some(c=> c.training_type === 'Ship Security Officer') ? '☑' : '☐' %> Ship Security
+              Officer
+          </td>
+          <td style="padding: 5px;font-size: 12px;">
+            <%= training_certificate?.some(c=> c.training_type === 'Welding Course') ? '☑' : '☐' %> Welding Course
+          </td>
+          <td style="padding: 5px;font-size: 12px;">
+            <%= training_certificate?.some(c=> c.training_type === 'PSCRB') ? '☑' : '☐' %> PSCRB
+          </td>
+          <td style="padding: 5px;font-size: 12px;">
+            <%= training_certificate?.some(c=> c.training_type === 'Medical Emergency First Aid') ? '☑' : '☐' %> Medical
+              Emergency First Aid
+          </td>
+        </tr>
+
+        <tr>
+          <td style="padding: 5px;font-size: 12px;">
+            <%= training_certificate?.some(c=> c.training_type === 'Medical Care COP') ? '☑' : '☐' %> Medical Care COP
+          </td>
+          <td style="padding: 5px;font-size: 12px;">
+            <%= training_certificate?.some(c=> c.training_type === 'SSBT w/BRM / ERS w/ERM') ? '☑' : '☐' %> SSBT w/BRM /
+              ERS w/ERM
+          </td>
+          <td style="padding: 5px;font-size: 12px;">
+            <%= training_certificate?.some(c=> c.training_type === 'Deck/Engine Watch Keeping') ? '☑' : '☐' %>
+              Deck/Engine Watch Keeping
+          </td>
+          <td style="padding: 5px;font-size: 12px;">
+            <%= training_certificate?.some(c=> c.training_type === 'Ship Security Officer COP') ? '☑' : '☐' %> Ship
+              Security Officer COP
+          </td>
+        </tr>
+
+        <tr>
+          <td style="padding: 5px;font-size: 12px;">
+            <%= training_certificate?.some(c=> c.training_type === 'SDSD') ? '☑' : '☐' %> SDSD
+          </td>
+          <td style="padding: 5px;font-size: 12px;">
+            <%= training_certificate?.some(c=> c.training_type === 'PSCRB COP') ? '☑' : '☐' %> PSCRB COP
+          </td>
+          <td style="padding: 5px;font-size: 12px;">
+            <%= training_certificate?.some(c=> c.training_type === 'MEFA COP') ? '☑' : '☐' %> MEFA COP
+          </td>
+          <td style="padding: 5px;font-size: 12px;">
+            <%= training_certificate?.some(c=> c.training_type === 'ECDIS Type Specific') ? '☑' : '☐' %> ECDIS Type
+              Specific
+          </td>
+        </tr>
+
+        <tr>
+          <td style="padding: 5px;font-size: 12px;">
+            <%= training_certificate?.some(c=> c.training_type === 'MARPOL Annex 1-6') ? '☑' : '☐' %> MARPOL Annex 1-6
+          </td>
+          <td style="padding: 5px;font-size: 12px;">
+            <%= training_certificate?.some(c=> c.training_type === 'GMDSS') ? '☑' : '☐' %> GMDSS
+          </td>
+          <td style="padding: 5px;font-size: 12px;">
+            <%= training_certificate?.some(c=> c.training_type === 'Food and Catering Management') ? '☑' : '☐' %> Food
+              and Catering Management
+          </td>
+          <td style="padding: 5px;font-size: 12px;">
+            <%= training_certificate?.some(c=> c.training_type === 'SDSD COP') ? '☑' : '☐' %> SDSD COP
+          </td>
+        </tr>
+      </table>
+
+    </div>
+
+    <!-- D. SEA SERVICE -->
+    <h4 colspan="16" style="font-weight: 600;margin-bottom: 5px;font-size: 12px;">D. SEA SERVICE</h4>
+    <table style="width: 100%; border-collapse: collapse; border:2px solid #000; margin-top: 10px;margin-bottom: 5px;font-size: 12px;">
+      <tr>
+        <th style="padding: 5px; border: 1px solid #000; text-align: left;">Vessel’s Name</th>
+        <!-- <th style="padding: 5px; border: 1px solid #000;">IMO No.</th> -->
+        <th style="padding: 5px; border: 1px solid #000;">Flag</th>
+        <!-- <th style="padding: 5px; border: 1px solid #000;">GRT</th> -->
+        <!-- <th style="padding: 5px; border: 1px solid #000;">DWT</th> -->
+        <!-- <th style="padding: 5px; border: 1px solid #000;">TEU</th> -->
+        <!-- <th style="padding: 5px; border: 1px solid #000;">Year Built</th> -->
+        <!-- <th style="padding: 5px; border: 1px solid #000;">BHP/ KW</th> -->
+        <!-- <th style="padding: 5px; border: 1px solid #000;">Ship Type</th> -->
+        <!-- <th style="padding: 5px; border: 1px solid #000;">Engine Make/Model</th> -->
+        <th style="padding: 5px; border: 1px solid #000; text-align: left;">Rank</th>
+        <th style="padding: 5px; border: 1px solid #000; text-align: left;">Sign-On Date</th>
+        <th style="padding: 5px; border: 1px solid #000; text-align: left;">Sign-Off Date</th>
+        <th style="padding: 5px; border: 1px solid #000; text-align: left;">Duration</th>
+        <th style="padding: 5px; border: 1px solid #000; text-align: left;">Reason for signing-Off</th>
+        <th style="padding: 5px; border: 1px solid #000; text-align: left;">Principal/Manning Agency and Telephone Number</th>
+      </tr>
+
+      <% if (career_info_parsed && career_info_parsed.length> 0) { %>
+        <% career_info_parsed.forEach(function(career) { %>
+          <tr>
+            <td style="padding: 5px; border: 1px solid #000;font-size: 12px;">
+              <%= career.vessel_name %>
+            </td>
+            <!-- <td style="padding: 5px; border: 1px solid #000;"></td> IMO No. -->
+            <td style="padding: 5px; border: 1px solid #000;">
+              <%= career.flag %>
+            </td>
+            <!-- <td style="padding: 5px; border: 1px solid #000;"></td>  -->
+            <!-- <td style="padding: 5px; border: 1px solid #000;"></td>  -->
+            <!-- <td style="padding: 5px; border: 1px solid #000;"></td>  -->
+            <!-- <td style="padding: 5px; border: 1px solid #000;"></td>  -->
+            <!-- <td style="padding: 5px; border: 1px solid #000;"></td> -->
+            <!-- <td style="padding: 5px; border: 1px solid #000;"></td>  -->
+            <!-- <td style="padding: 5px; border: 1px solid #000;"></td>  -->
+            <td style="padding: 5px; border: 1px solid #000;font-size: 12px;">
+              <%= career.rank_name %>
+            </td>
+            <td style="padding: 5px; border: 1px solid #000;font-size: 12px;">
+              <%= career.sign_on_date ? new Date(career.sign_on_date).toLocaleDateString('en-GB').replace(/\//g, '.' )
+                : 'N/A' %>
+            </td>
+            <td style="padding: 5px; border: 1px solid #000;font-size: 12px;">
+              <%= career.sign_off_date ? new Date(career.sign_off_date).toLocaleDateString('en-GB').replace(/\//g, '.' )
+                : 'N/A' %>
+            </td>
+
+
+            <td style="padding: 5px; border: 1px solid #000;font-size: 12px;">
+              <% if (career.sign_on_date && career.sign_off_date) { const signOn=new Date(career.sign_on_date); const
+                signOff=new Date(career.sign_off_date); let years=signOff.getFullYear() - signOn.getFullYear(); let
+                months=signOff.getMonth() - signOn.getMonth(); let days=signOff.getDate() - signOn.getDate(); if (days <
+                0) { months -=1; days +=new Date(signOff.getFullYear(), signOff.getMonth(), 0).getDate(); } if (months <
+                0) { years -=1; months +=12; } %>
+                <%= years %>Y / <%= months %>M / <%= days %>D
+                      <% } else { %>
+                        N/A
+                        <% } %>
+            </td>
+
+
+
+            <td style="padding: 5px; border: 1px solid #000;font-size: 12px;">
+              <%= career.reason_for_signing_off %>
+            </td>
+            <td style="padding: 5px; border: 1px solid #000;font-size: 12px;">
+              <%= career.principal_manning_agency %> / <%= career.telephone %>
+            </td>
+          </tr>
+          <% }); %>
+            <% } else { %>
+              <tr>
+                <td style="padding: 5px; border: 1px solid #000;font-size: 12px;" colspan="16">No sea service information available.
+                </td>
+              </tr>
+              <% } %>
+    </table>
+
+<!-- Health & Legal Questions -->
+<div style="border:2px solid #000; margin-bottom: 5px;padding: 10px;font-size: 12px;">
+  <p><strong>Please answer the following questions:</strong></p>
+  <ul>
+    <li style="font-size: 12px;">
+      Did you suffer, or presently suffer from, any disease likely to render you unfit for services at sea or likely to endanger the health of other persons on board?
+      <strong>
+        <%= typeof user_medical_questionnaire !== 'undefined' && user_medical_questionnaire.disease_unfit_service ? 'YES' : 'NO' %>
+      </strong>
+      <% if (typeof user_medical_questionnaire !== 'undefined' && user_medical_questionnaire.disease_unfit_service) { %>
+        <br>Reason: 
+        <strong><%= user_medical_questionnaire.disease_unfit_service_reason || '' %></strong>
+      <% } %>
+    </li>
+
+    <li style="font-size: 12px;">
+      Did you suffer any accident, which rendered you temporary and/or partially disabled?
+      <strong>
+        <%= typeof user_medical_questionnaire !== 'undefined' && user_medical_questionnaire.accident_disability ? 'YES' : 'NO' %>
+      </strong>
+      <% if (typeof user_medical_questionnaire !== 'undefined' && user_medical_questionnaire.accident_disability) { %>
+        <br>If yes, please provide details:
+      <% } %>
+    </li>
+
+    <li style="font-size: 12px;">
+      Did you ever undergo psychiatric treatment?
+      <strong>
+        <%= typeof user_medical_questionnaire !== 'undefined' && user_medical_questionnaire.psychiatric_treatment ? 'YES' : 'NO' %>
+      </strong>
+      <% if (typeof user_medical_questionnaire !== 'undefined' && user_medical_questionnaire.psychiatric_treatment) { %>
+        <br>If yes, please provide details:
+      <% } %>
+    </li>
+
+    <li style="font-size: 12px;">
+      Are you addicted to alcohol or drugs of any kind?
+      <strong>
+        <%= typeof user_medical_questionnaire !== 'undefined' && user_medical_questionnaire.alcohol_drug_addiction ? 'YES' : 'NO' %>
+      </strong>
+      <% if (typeof user_medical_questionnaire !== 'undefined' && user_medical_questionnaire.alcohol_drug_addiction) { %>
+        <br>If yes, please provide details:
+      <% } %>
+    </li>
+
+    <li style="font-size: 12px;">
+      Have you ever been deported or convicted for Magic Pipes or involved in any illegal or similar activities which resulted in being blacklisted in the United States Coast Guard and Environmental Protection Agency?
+      <strong>
+        <%= typeof user_medical_questionnaire !== 'undefined' && user_medical_questionnaire.blacklisted_illegal_activities ? 'YES' : 'NO' %>
+      </strong>
+      <% if (typeof user_medical_questionnaire !== 'undefined' && user_medical_questionnaire.blacklisted_illegal_activities) { %>
+        <br>Reason: 
+        <strong><%= user_medical_questionnaire.blacklisted_illegal_activities_reason || '' %></strong>
+      <% } %>
+    </li>
+  </ul>
+</div>
+
+
+    <div style="border:2px solid #000;padding: 10px; margin-bottom: 5px;font-size: 12px;">
+      <!-- CERTIFICATION -->
+      <h4 style="text-align: center;font-weight: 600; margin-bottom: 0px;margin-top: 0px;">CERTIFICATION</h4>
+      <p style="margin-top: 5px;margin-bottom: 5px;font-size: 12px;">
+        &nbsp;&nbsp; I hereby declare that the information in this Application Form is correct and true to the best of
+        my knowledge,
+        and
+        I consent that the foregoing information may be used by NAVILANDS MARINE INC. and/or its Principal/s for
+        purposes
+        of
+        my employment.<br>
+        &nbsp;&nbsp;I confirm that all my documents are authentic, and I hereby authorize NAVILANDS MARINE INC. to
+        verify the
+        genuineness thereof from the concerned agencies. I authorize NAVILANDS MARINE INC. to process my data and to
+        distribute it for employment purposes.<br>
+        &nbsp;&nbsp; In case of any false declaration of a material information in the Application Form, NAVILANDS
+        MARINE INC. and/or
+        its
+        Principal/s has an absolute right to immediately terminate my employment for misrepresentation.
+      </p>
+      <p style="text-align: right; margin-top: 40px;">Signature over Printed Name/Date</p>
+
+    </div>
+
+    <h4 style="text-align: center;font-weight: 600; margin-bottom: 5px;margin-top: 5px;font-size: 12px;">FOR OFFICIAL USE ONLY (Please
+      do not write below this line)</h4>
+    <div>
+      <!-- FOR OFFICIAL USE -->
+
+      <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+        <tr>
+          <td style="padding: 5px; border: 1px solid #000;"> Pls. Tick: <strong>[ ] Approved</strong> <strong>[ ] Not
+              Approved / Comments / Remarks</strong>
+
+            <br /><br /><br /><br /><br />
+          </td>
+          <td style="padding: 5px; border: 1px solid #000;"><strong>Interviewed by: </strong>
+            <br /><br /><br /><br /><br />
+          </td>
+          <td style="padding: 5px; border: 1px solid #000;"><strong>Approved by: </strong>
+            <br /><br /><br /><br /><br />
+          </td>
+        </tr>
+      </table>
+
+    </div>
+  </div>
+
+</body>
+
+</html>
