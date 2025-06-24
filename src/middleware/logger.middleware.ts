@@ -16,7 +16,9 @@ import { winstonLogger } from './winston-logger';
         const originalSend = res.send;
         res.send = function (body?: any): Response {
             if (res.statusCode >= 400) {
-                winstonLogger.error(`Error ${res.statusCode} on ${method} ${originalUrl} - Body: ${JSON.stringify(body)}`);
+                const isProd = process.env.NODE_ENV === 'production';
+                const responseBodyLog = isProd ? "[Error Response Body Not Logged in Production]" : JSON.stringify(body);
+                winstonLogger.error(`Error ${res.statusCode} on ${method} ${originalUrl} - Body: ${responseBodyLog}`);
             }
             return originalSend.call(this, body);
         };

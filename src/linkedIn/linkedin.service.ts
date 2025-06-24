@@ -42,7 +42,8 @@ export class JobScheduler {
     };
 
     try {
-      const response = await this.linkedInService.createJobPost(jobContent);
+      // const response = await this.linkedInService.createJobPost(jobContent);
+      // console.log('Job posting skipped as access token is not configured.'); // Optional: Add a log message
     } catch (error) {
       console.error('Error posting job:', error);
     }
